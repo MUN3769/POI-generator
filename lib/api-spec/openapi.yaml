@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: poi
+    description: POI generation operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,22 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /poi/generate:
+    post:
+      operationId: generatePoi
+      tags: [poi]
+      summary: Generate POIs using AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeneratePoiBody"
+      responses:
+        "200":
+          description: SSE stream of POI text chunks
+          content:
+            text/event-stream: {}
 components:
   schemas:
     HealthStatus:
@@ -33,4 +51,23 @@ components:
           type: string
       required:
         - status
-
+    GeneratePoiBody:
+      type: object
+      properties:
+        level:
+          type: string
+          enum: [friendly, moderate, hard, killer, war]
+        country:
+          type: string
+        committee:
+          type: string
+        agenda:
+          type: string
+        count:
+          type: integer
+      required:
+        - level
+        - country
+        - committee
+        - agenda
+        - count

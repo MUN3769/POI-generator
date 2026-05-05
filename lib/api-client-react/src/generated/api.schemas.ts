@@ -8,3 +8,22 @@
 export interface HealthStatus {
   status: string;
 }
+
+export type GeneratePoiBodyLevel =
+  (typeof GeneratePoiBodyLevel)[keyof typeof GeneratePoiBodyLevel];
+
+export const GeneratePoiBodyLevel = {
+  friendly: "friendly",
+  moderate: "moderate",
+  hard: "hard",
+  killer: "killer",
+  war: "war",
+} as const;
+
+export interface GeneratePoiBody {
+  level: GeneratePoiBodyLevel;
+  country: string;
+  committee: string;
+  agenda: string;
+  count: number;
+}

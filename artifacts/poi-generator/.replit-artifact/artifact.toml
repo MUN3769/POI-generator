@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "POI Generator"
+version = "1.0.0"
+id = "artifacts/poi-generator"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25378
+
+[services.development]
+run = "pnpm --filter @workspace/poi-generator run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/poi-generator", "run", "build" ]
+publicDir = "artifacts/poi-generator/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25378"
+BASE_PATH = "/"

@@ -14,3 +14,14 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * @summary Generate POIs using AI
+ */
+export const GeneratePoiBody = zod.object({
+  level: zod.enum(["friendly", "moderate", "hard", "killer", "war"]),
+  country: zod.string(),
+  committee: zod.string(),
+  agenda: zod.string(),
+  count: zod.number(),
+});
