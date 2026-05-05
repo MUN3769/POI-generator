@@ -145,19 +145,12 @@ export default function Home() {
 
       <div className="w-full max-w-2xl relative z-10">
         <div className="mb-8 text-center space-y-2">
-          <div className="inline-flex items-center justify-center space-x-2 border border-primary/30 bg-primary/5 px-3 py-1 rounded-none mb-4 text-primary text-xs font-mono tracking-widest uppercase shadow-[0_0_15px_rgba(245,158,11,0.15)]">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            <span>Tactical POI Generator</span>
-          </div>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight uppercase">
-            Briefing <span className="text-primary font-light">Console</span>
+            MUN <span className="text-primary font-light">POI Generator</span>
           </h1>
-          <p className="text-muted-foreground font-mono text-sm max-w-md mx-auto">
-            MUN DEBATE ARSENAL &middot; ESTABLISH PARAMETERS
-          </p>
         </div>
 
-        <div className="relative bg-card border border-border p-6 md:p-8 shadow-2xl overflow-hidden before:absolute before:inset-0 before:ring-1 before:ring-inset before:ring-white/5">
+        <div className="relative bg-card border border-border p-6 md:p-8 shadow-2xl overflow-hidden before:absolute before:inset-0 before:ring-1 before:ring-inset before:ring-white/5 before:pointer-events-none">
           <AnimatePresence mode="wait">
             {showForm ? (
               <motion.div
